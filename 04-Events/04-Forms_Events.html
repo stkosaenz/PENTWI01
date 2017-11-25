@@ -1,0 +1,32 @@
+<html>
+<!-- Omar Sáenz Mendoza -->
+<!-- MEAN training - Front-End Developer -->
+<!-- jQuery: Form Events -->
+
+<head>
+    <script type="text/javascript" src="../00-Lib/jquery-git.min.js"></script>
+    <title>jQuery - Form Events</title>
+    <style>
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#myinput")
+                .on("keyup", function (ev) {
+                    console.log(ev.which);
+                })
+                .on("change", function (ev) {
+                    console.log("the only constant is change");
+                })
+                .on("focus", function (ev) {
+                    console.log("focus is important");
+                });
+        });
+    </script>
+</head>
+
+<body>
+    <input type="text" id="myinput" />
+    <input type="text" id="myinput2" />
+</body>
+
+</html>

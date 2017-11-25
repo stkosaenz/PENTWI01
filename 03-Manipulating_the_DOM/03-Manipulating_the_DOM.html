@@ -1,0 +1,93 @@
+<html>
+<!-- Omar Sáenz Mendoza -->
+<!-- MEAN training - Front-End Developer -->
+<!-- jQuery: Manipulating the DOM -->
+
+<head>
+    <script type="text/javascript" src="../00-Lib/jquery-git.min.js"></script>
+    <title>jQuery - Manipulating the DOM</title>
+    <style>
+        .append {
+            background-color: lightgray;
+        }
+
+        .appendTo {
+            background-color: lightblue;
+        }
+
+        .prepend {
+            background-color: lightgreen;
+        }
+
+        .prependTo {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <select id="options">
+            <option>append</option>
+            <option>appendTo</option>
+            <option>prepend</option>
+            <option>prependTo</option>
+        </select>
+        <button id="button" onclick="modifyElement()">Modify</button>
+    </div>
+    <div style="height:50px;"></div>
+    <div id="main">
+        <p>First Paragraph</p>
+        <p>Second Paragraph</p>
+        <p>Third Paragraph</p>
+        <p>Fourth Paragraph</p>
+    </div>
+    <script>
+        function modifyElement() {
+            var option = $("#options").val();
+            switch (option) {
+                case "appendTo":
+                    $("<p class='appendTo'>this is appendTo</p>").appendTo("p");
+                    break;
+                case "append":
+                    $("p").append("<p class='append'>this is append</p>");
+                    break;
+                case "prependTo":
+                    $("<p class='prependTo'>this is prependTo</p>").prependTo("p");
+                    break;
+                case "prepend": $
+                    $("p").prepend("<p class='prepend'>this is prepend</p>");
+                    break;
+            }
+        }
+    </script>
+    <hr />
+    <div>
+        <p id="heyP">Hey there!</p>
+        <p id="replaceP">Replace me!</p>
+        <p id="cssP">BackGround</p>
+        <p id="cssDynamic">BackGround</p>
+        <button onclick="addClass();">Add Class</button>
+        <button onclick="removeClass();">Remove Class</button>
+    </div>
+    <script>
+        function addClass() {
+            $("#cssDynamic").addClass("appendTo");
+        }
+        function removeClass() {
+            $("#cssDynamic").removeClass("appendTo");
+        }
+        $(function () {
+            $("<a />", {
+                html: "This is a <strong>new</strong> link",
+                "class": "link",
+                href: "http://www.nba.com"
+            }).appendTo("#heyP");
+            $("#replaceP").replaceWith("<div>I replaced the 'p'</div>");
+            $("#cssP").css("background-color", "yellow");
+            $("#cssP").css({ "color": "blue", "font-size": "14px" });
+        });
+    </script>
+</body>
+
+</html>
