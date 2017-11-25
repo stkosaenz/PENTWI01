@@ -1,0 +1,68 @@
+<html>
+<!-- Omar Sáenz Mendoza -->
+<!-- MEAN training - Front-End Developer -->
+<!-- jQuery: Custom easing function -->
+
+<head>
+    <script type="text/javascript" src="../00-Lib/jquery-git.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // $('.parent div').on('click', function (ev) {
+            //     $(ev.currentTarget).animate({ width: 200 }, { duration: 500 });
+            // });
+
+            $('#stretchAll').on('click', function (ev) {
+                $('.parent div').css('width', 'auto');
+            });
+
+            // Easing!
+            // $.easing.easeInOutQuad = function (x, t, b, c, d) {
+            //     if ((t /= d / 2) < 1) return c / 2 * t * t + b;
+            //     return -c / 2 * ((--t) * (t - 2) - 1) + b;
+            // }
+
+            // $(".parent div").on("click", function (ev) {
+            //     $(ev.currentTarget).animate({ width: 200 }, "slow", "easeInOutQuad");
+            // });
+
+            $(".parent div").on("click", function (ev) {
+                $(ev.currentTarget).animate({ width: 200 }, {
+                    duration: 5000,
+                    step: function (now, fx) {
+                        console.log(now);
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        div {
+            margin: 2px;
+            font: bold 9pt 'Segoe UI';
+        }
+
+        .parent {
+            border: solid 2px black;
+            color: black;
+        }
+
+        .child {
+            border: solid 2px gray;
+            height: 40px;
+            color: gray;
+        }
+    </style>
+    <title>jQuery - Custom Easing Function</title>
+</head>
+
+<body>
+    <div class="parent" data-name="parent">
+        PARENT
+        <div class="child" data-name="child 1">CHILD 1</div>
+        <div class="child" data-name="child 2">CHILD 2</div>
+        <div class="child" data-name="child 3">CHILD 3</div>
+    </div>
+    <button id="stretchAll">Stretch All</button>
+</body>
+
+</html>

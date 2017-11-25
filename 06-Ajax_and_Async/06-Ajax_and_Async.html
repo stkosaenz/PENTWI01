@@ -1,0 +1,53 @@
+<html>
+<!-- Omar Sáenz Mendoza -->
+<!-- MEAN training - Front-End Developer -->
+<!-- jQuery: Async and Ajax -->
+
+<head>
+    <script type="text/javascript" src="../00-Lib/jquery-git.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const value = $.param({ a: [2, 3, 4] });
+            $("#divOutput").text(value);
+            console.log(value);
+
+            $.ajax({
+                url: 'http://services.odata.org/V4/Northwind/Northwind.svc/Products?$select=ProductName',
+                //url:'https://cfcorsdemo.azurewebsites.net/api/values',
+                success: function (data) {
+                    console.log(data.value);
+                }
+            });
+
+            $("#results").load("http://services.odata.org/V4/Northwind/Northwind.svc/Products?$select=ProductName");
+            /*$.get('https://cfcorsdemo.azurewebsites.net/api/values',
+                function(data) {
+                    console.log(data);
+                }
+            );*/
+
+            /*$.post(
+                'https://cfcorsdemo.azurewebsites.net/api/values',
+                {value:"value"},
+                function(data) {
+                    console.log(data);
+                }
+            );*/
+        });
+    </script>
+    <style>
+        #results {
+            border: solid 2px gray;
+            height: 200px;
+        }
+    </style>
+    <title>jQuery - Async and Ajax</title>
+</head>
+
+<body>
+    <div id="divOutput"></div>
+    <div id="results">
+    </div>
+</body>
+
+</html>

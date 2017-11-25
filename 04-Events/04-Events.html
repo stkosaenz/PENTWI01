@@ -1,0 +1,58 @@
+<html>
+<!-- Omar Sáenz Mendoza -->
+<!-- MEAN training - Front-End Developer -->
+<!-- jQuery: Events -->
+
+<head>
+    <script type="text/javascript" src="../00-Lib/jquery-git.min.js"></script>
+    <title>jQuery - Events</title>
+    <style>
+        div {
+            margin: 2px;
+            font: bold 9pt "Segoe UI";
+        }
+
+        .parent {
+            border: solid 2px black;
+            color: black;
+        }
+
+        .child {
+            border: solid 2px gray;
+            height: 40px;
+            color: gray;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+
+            $("div").on("click", function (ev) {
+                console.log(ev.currentTarget.dataset.name);
+                console.log(ev);
+                ev.stopPropagation();
+            });
+
+            $("#triggerIt").on("click", function (ev) {
+                $("div[data-name='child 3']").trigger("click"); //programmatically cause a click to happen just as if the user had actually clicked it
+            });
+
+            $("#turnEmOff").on("click", function (ev) {
+                $("div").off(); //remove ALL event handlers
+                //$("div").off("click"); //just remove click handlers
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="parent" data-name="parent">
+        PARENT
+        <div class="child" data-name="child 1">CHILD 1</div>
+        <div class="child" data-name="child 2">CHILD 2</div>
+        <div class="child" data-name="child 3">CHILD 3</div>
+    </div>
+    <button id="turnEmOff">Turn "em off</button>
+    <button id="triggerIt">Trigger on CHILD 3</button>
+</body>
+
+</html>

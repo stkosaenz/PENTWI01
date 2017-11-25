@@ -1,0 +1,45 @@
+<html>
+<!-- Omar Sáenz Mendoza -->
+<!-- MEAN training - Front-End Developer -->
+<!-- jQuery: jQuery Deferred -->
+
+<head>
+    <script type="text/javascript" src="../00-Lib/jquery-git.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //bad!
+            //$.get("https://cfcorsdemo.azurewebsites.net/api/values");
+            //$('#results').text('done'); //this is an outright lie!
+
+            //good
+            $.get("http://services.odata.org/V4/Northwind/Northwind.svc/Products?$select=ProductName")
+                .then(function () {
+                    $('#results').text('done with the service call'); //this is truly happening AFTER the return
+                });
+
+            myDeferredASync()
+                .then(function () {
+                    $('#results').append('</br>done with the custom deferred function');
+                });
+
+            function myDeferredASync() {
+                var d = $.Deferred();
+                setTimeout(function () { d.resolve(); }, 5000);
+                return d.promise();
+            }
+        });
+    </script>
+    <style>
+        #results {
+            border: solid 1px gray;
+            height: 200px;
+        }
+    </style>
+    <title>jQuery - jQuery Deferred</title>
+</head>
+
+<body>
+    <div id="results"></div>
+</body>
+
+</html>
