@@ -1,7 +1,7 @@
 # PENTWI01
 Create HTML5 Apps with jQuery Jump Start
 
-#Contents
+# Contents
 * [jQuery 101](01-jQuery_101/01-jQuery_101.html)
 * [Selectors](02-Selectors/02-Selectors.html)
 * [Manipulating the DOM](03-03-Manipulating_the_DOM/03-03-Manipulating_the_DOM.html)
